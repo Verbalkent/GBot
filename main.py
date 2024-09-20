@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template
 import os
 import cohere
 
-app = Flask(__name__, static_folder="static", template_folder="static")
+app = Flask(__name__, static_folder="static", template_folder="templates")
 
 # Initialize Cohere client with the API key from the environment variable
 cohere_api_key = os.getenv("COHERE_API_KEY")
@@ -14,7 +14,7 @@ co = cohere.Client(cohere_api_key)
 
 @app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template("templates/index.html")
 
 # Route to generate survey questions
 @app.route('/generate_survey', methods=['POST'])
